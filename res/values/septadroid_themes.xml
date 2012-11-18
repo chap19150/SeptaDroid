@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="septadroid" parent="android:Theme">
+
+    <item name="android:editTextStyle">@style/EditTextseptadroid</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxseptadroid</item>
+
+    <item name="android:buttonStyle">@style/Buttonseptadroid</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonseptadroid</item>
+
+    <item name="android:spinnerStyle">@style/Spinnerseptadroid</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/Spinnerseptadroid.DropDown</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemseptadroid</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarseptadroid</item>
+
+    <item name="android:listViewStyle">@style/ListViewseptadroid</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewseptadroid.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemseptadroid</item>
+
+  </style>
+
+</resources>

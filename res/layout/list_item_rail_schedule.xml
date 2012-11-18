@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background3"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp" 
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/origin_train"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connection"
+            android:layout_marginTop="10dp"
+            android:text="@string/train"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_train_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connection"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/origin_train"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_train"
+            android:text="@string/line"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_line_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_train"
+            android:layout_toRightOf="@+id/origin_line"
+            android:text="@string/line"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/origin_depart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_line"
+            android:text="@string/depart"
+            android:textSize="15dip"
+           android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_depart_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_line"
+            android:layout_toRightOf="@+id/origin_depart"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/origin_arrive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_depart"
+            android:text="@string/arrive"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_arrive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_depart"
+            android:layout_toRightOf="@+id/origin_arrive"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/origin_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_arrive"
+            android:layout_marginBottom="10dp"
+            android:text="@string/status"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/origin_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_arrive"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/origin_status"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp" 
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp" >
+
+        <TextView
+            android:id="@+id/connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/connect"
+            android:textSize="20dip"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/connection_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/connection"
+            android:textSize="20dip"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_train"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connection"
+            android:layout_marginTop="10dp"
+            android:text="@string/train"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_train_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connection"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/term_train"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_train"
+            android:text="@string/line"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_line_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_train"
+            android:layout_toRightOf="@+id/term_line"
+            android:text="@string/line"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/term_depart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_line"
+            android:text="@string/depart"
+            android:textSize="15dip"
+           android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_depart_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_line"
+            android:layout_toRightOf="@+id/term_depart"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/term_arrive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_depart"
+            android:text="@string/arrive"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_arrive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_depart"
+            android:layout_toRightOf="@+id/term_arrive"
+            android:textSize="15dip"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/term_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_arrive"
+            android:text="@string/status"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/term_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_arrive"
+            android:layout_toRightOf="@+id/term_status"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dip" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SeptaDroid</string>
+
+    <string name="train">Train: </string>
+    <string name="line">Line: </string>
+    <string name="depart">Depart: </string>
+    <string name="arrive">Arrive: </string>
+    <string name="status">Status: </string>
+    <string name="connect">Connection at </string>
+    <string name="origin">Please choose origin station:</string>
+    <string name="dest">Please choose destination station:</string>
+    <string name="no_data">No data available.</string>
+    <string name="server_error">Server error. Please try again.</string>
+    <string name="notif">Notifications</string>
+    <string name="notif_enabled">Notifications Enabled</string>
+    <string name="pull_down">Pull down to refresh data</string>
+</resources>
