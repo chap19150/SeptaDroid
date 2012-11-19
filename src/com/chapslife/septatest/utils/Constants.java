@@ -21,7 +21,8 @@ public interface Constants {
 	public static final String GETRAILSTOPS = "/GetRailStops";
 	public static final String BUSSCHEDULES = "/BusSchedules";
 	public static final String NEXT_TO_ARRIVE = "/NextToArrive";
-	public static final String ALERTS = "/Alerts/get_alert_data.php?req1=all";
+	public static final String ALERTS = "/Alerts/";
+	public static final String SINGLE_ALERT = "get_alert_data.php?req1=";
 	public static final String TRANSIT_VIEW = "/TransitView";
 	public static final String TRAIN_VIEW = "/TrainView";
 	public static final String URL = "http://www.7677Mobile.com";

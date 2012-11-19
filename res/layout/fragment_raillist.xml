@@ -12,7 +12,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:background="@drawable/spinner_background_holo_dark" />
 
     <Button
         android:id="@+id/switch_button"
@@ -28,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:background="@drawable/spinner_background_holo_dark" />
 
     <Button
         android:id="@+id/next_button"

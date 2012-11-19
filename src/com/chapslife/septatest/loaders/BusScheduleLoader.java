@@ -13,8 +13,10 @@ import android.support.v4.content.AsyncTaskLoader;
 
 import com.chapslife.septatest.api.SeptaApi;
 import com.chapslife.septatest.api.SeptaHttpResponseException;
+import com.chapslife.septatest.domains.Advisory;
 import com.chapslife.septatest.domains.BusStop;
 import com.chapslife.septatest.domains.BusTrip;
+import com.chapslife.septatest.helpers.AdvisoryHelper;
 import com.chapslife.septatest.utils.Constants;
 import com.chapslife.septatest.utils.Logger;
 import com.google.gson.Gson;
@@ -38,15 +40,27 @@ public class BusScheduleLoader extends AsyncTaskLoader<ArrayList<BusTrip>>{
 		final SeptaApi api = new SeptaApi(Constants.SEPTA_HACKATHON_URL);
 		
 		try {
-			final InputStream is = api.get(Constants.BUSSCHEDULES + "/" +params);
+			InputStream is = api.get(Constants.BUSSCHEDULES + "/" +params);
 			String content = SeptaApi.convertStreamToString(is);
+			is.close();
 			JSONObject obj = new JSONObject(content);
 			JSONArray ja = obj.getJSONArray(mBusStop.getTitle());
 			for (int index = 0; index < ja.length(); index++) {
 				JSONObject object = ja.getJSONObject(index);
-				Logger.d("BUS TRIP", object.toString());
 				Gson gson = new Gson();
 				tempTrips.add(gson.fromJson(object.toString(), BusTrip.class));
+			}
+			if(tempTrips.size() > 0){
+				String route_name = AdvisoryHelper.getRouteIdFromRouteName(mContext, mBusStop.getTitle());
+				is = api.get(Constants.ALERTS + Constants.SINGLE_ALERT + route_name);
+				String single = SeptaApi.convertStreamToString(is);
+				is.close();
+				JSONArray array = new JSONArray(single);
+				for (int index = 0; index < array.length(); index++) {
+					JSONObject object = array.getJSONObject(index);
+					Gson gson = new Gson();
+					tempTrips.get(0).setAdvisory(gson.fromJson(object.toString(), Advisory.class));
+				}
 			}
 			return tempTrips;
 		} catch (IOException e) {

@@ -14,4 +14,8 @@
     <string name="notif">Notifications</string>
     <string name="notif_enabled">Notifications Enabled</string>
     <string name="pull_down">Pull down to refresh data</string>
+    
+    <string name="content_provider_name">com.chapslife.septatest.provider.SeptaDataProvider</string>
+    <string name="content_provider_authority">com.chapslife.septatest</string>
+    <string name="content_provider_database_name">Septadroid.db</string>
 </resources>

@@ -9,7 +9,8 @@ public class BusTrip {
 	private String day;
 	private String Direction;
 	private String DateCalendar;
-
+	private Advisory advisory;
+	
 	public BusTrip() {
 
 	}
@@ -98,5 +99,12 @@ public class BusTrip {
 		DateCalendar = dateCalendar;
 	}
 
-	
+	public Advisory getAdvisory() {
+		return advisory;
+	}
+
+	public void setAdvisory(Advisory advisory) {
+		this.advisory = advisory;
+	}
+
 }

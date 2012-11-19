@@ -20,7 +20,8 @@ public class RailTrip {
 	private String Connection;
 	private String term_delay;
 	private String isdirect;
-
+	private Advisory advisory;
+	
 	public RailTrip() {
 
 	}
@@ -139,5 +140,13 @@ public class RailTrip {
 
 	public void setIsDirect(String isDirect) {
 		this.isdirect = isDirect;
+	}
+
+	public Advisory getAdvisory() {
+		return advisory;
+	}
+
+	public void setAdvisory(Advisory advisory) {
+		this.advisory = advisory;
 	}
 }

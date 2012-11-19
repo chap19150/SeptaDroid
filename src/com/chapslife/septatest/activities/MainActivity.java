@@ -1,10 +1,14 @@
 package com.chapslife.septatest.activities;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.Loader;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -13,12 +17,16 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.chapslife.septatest.R;
+import com.chapslife.septatest.domains.Alerts;
 import com.chapslife.septatest.fragments.BusListFragment;
 import com.chapslife.septatest.fragments.MobclixFragment;
 import com.chapslife.septatest.fragments.RailListFragment;
 import com.chapslife.septatest.fragments.SubwayListFragment;
+import com.chapslife.septatest.loaders.AdvisoryListLoader;
+import com.chapslife.septatest.loaders.BusScheduleLoader;
+import com.chapslife.septatest.utils.Logger;
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayList<Alerts>>{
 
 	private Tab mRailTab;
 	private Tab mSubwayTab;
@@ -77,7 +85,7 @@ public class MainActivity extends BaseActivity{
 		
 		mSubwayTab = getSupportActionBar()
 				.newTab()
-				.setText("SUBWAY\nTROLLEY")
+				.setText(" SUBWAY\nTROLLEY")
 				.setTabListener(
 						new TabListener<SubwayListFragment>(this, "SUBWAY",
 								SubwayListFragment.class));
@@ -90,7 +98,8 @@ public class MainActivity extends BaseActivity{
 		getSupportActionBar().addTab(mRailTab);
 		getSupportActionBar().addTab(mSubwayTab);
 		getSupportActionBar().addTab(mBusTab);
-		
+		// Initialize the Loader.
+		getSupportLoaderManager().initLoader(0, null, this);
 	}
 	
 	/**
@@ -147,6 +156,24 @@ public class MainActivity extends BaseActivity{
 			// TODO Auto-generated method stub
 			
 		}
+		
+	}
+
+	@Override
+	public Loader<ArrayList<Alerts>> onCreateLoader(int id, Bundle args) {
+		return new AdvisoryListLoader(this.getApplicationContext());
+	}
+
+	@Override
+	public void onLoadFinished(Loader<ArrayList<Alerts>> loader, ArrayList<Alerts> data) {
+		if(data != null){
+			Logger.d("DATA SIZE", String.valueOf(data.size()));
+		}
+	}
+
+	@Override
+	public void onLoaderReset(Loader<ArrayList<Alerts>> arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }

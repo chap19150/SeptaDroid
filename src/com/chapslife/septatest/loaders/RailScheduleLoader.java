@@ -13,7 +13,9 @@ import android.support.v4.content.AsyncTaskLoader;
 
 import com.chapslife.septatest.api.SeptaApi;
 import com.chapslife.septatest.api.SeptaHttpResponseException;
+import com.chapslife.septatest.domains.Advisory;
 import com.chapslife.septatest.domains.RailTrip;
+import com.chapslife.septatest.helpers.AdvisoryHelper;
 import com.chapslife.septatest.utils.Constants;
 import com.chapslife.septatest.utils.Logger;
 import com.google.gson.Gson;
@@ -37,14 +39,29 @@ public class RailScheduleLoader extends AsyncTaskLoader<ArrayList<RailTrip>> {
 		ArrayList<RailTrip> tempTrips = new ArrayList<RailTrip>();
 		final SeptaApi api = new SeptaApi(Constants.SEPTA_HACKATHON_URL);
 		try {
-			final InputStream is = api.get(Constants.NEXT_TO_ARRIVE + "/" + mOrigLine + "/"
+			InputStream is = api.get(Constants.NEXT_TO_ARRIVE + "/" + mOrigLine + "/"
 					+ mDestLine + "/" + "10");
 			String content = SeptaApi.convertStreamToString(is);
+			is.close();
 			JSONArray array = new JSONArray(content);
 			for (int i = 0; i < array.length(); i++) {
 				JSONObject object = array.getJSONObject(i);
 				Gson gson = new Gson();
 				tempTrips.add(gson.fromJson(object.toString(), RailTrip.class));
+			}
+			if(tempTrips.size() > 0){
+				String title = tempTrips.get(0).getOrig_line();
+				String route_name = AdvisoryHelper.getRouteIdFromRouteName(mContext, title);
+				is = api.get(Constants.ALERTS + Constants.SINGLE_ALERT + route_name);
+				String single = SeptaApi.convertStreamToString(is);
+				is.close();
+				JSONArray alerts = new JSONArray(single);
+				for (int index = 0; index < alerts.length(); index++) {
+					JSONObject object = alerts.getJSONObject(index);
+					Logger.d("OGJECT", object.toString());
+					Gson gson = new Gson();
+					tempTrips.get(0).setAdvisory(gson.fromJson(object.toString(), Advisory.class));
+				}
 			}
 			return tempTrips;
 		} catch (IOException e) {

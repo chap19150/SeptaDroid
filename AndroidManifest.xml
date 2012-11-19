@@ -90,6 +90,12 @@
             android:name="ADMOB_PUBLISHER_ID"
             android:value="a14c33d9253ff64" />
 
+        <provider android:name="com.chapslife.septatest.provider.SeptaDataProvider"
+            android:exported="false"
+            android:authorities="com.chapslife.septatest"
+            android:permission="com.chapslife.septatest.WRITE_PERMISSION">
+        </provider>
+        
         <uses-library android:name="com.google.android.maps" />
     </application>
 

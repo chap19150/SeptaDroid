@@ -13,26 +13,27 @@
         android:id="@+id/listview_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"
-        android:text="EMPTY"
+        android:text="Currently no data"
         android:textSize="18sp"
         android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/listview_progress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:visibility="gone" >
 
         <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
+            style="@style/ProgressBarseptadroid"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true" />
 
