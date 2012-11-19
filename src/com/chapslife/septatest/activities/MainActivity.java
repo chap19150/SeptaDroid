@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 		
 		mSubwayTab = getSupportActionBar()
 				.newTab()
-				.setText(" SUBWAY\nTROLLEY")
+				.setText("SUBWAY\nTROLLEY")
 				.setTabListener(
 						new TabListener<SubwayListFragment>(this, "SUBWAY",
 								SubwayListFragment.class));

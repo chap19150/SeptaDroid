@@ -81,7 +81,7 @@ public class AdvisoryDialogFragment extends SherlockDialogFragment implements On
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
-		View view = inflater.inflate(R.layout.advisory_dialog_fragment, container, false);
+		View view = inflater.inflate(R.layout.dialog_fragment_advisory, container, false);
 		
 		titleText = (TextView) view.findViewById(R.id.advisory_dialog_title);
 		if(getArguments().getString(DIALOG_TITLE) != null){

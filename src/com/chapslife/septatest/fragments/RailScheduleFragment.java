@@ -92,9 +92,11 @@ public class RailScheduleFragment extends BaseFragment implements
 		mAdapter.setItems(data);
 		mProgressBar.setVisibility(View.GONE);
 		mListView.setEmptyView(mEmptyList);
-		if (data.size() > 0) {
-			advisory = data.get(0).getAdvisory();
-			getSherlockActivity().invalidateOptionsMenu();
+		if(data != null){
+			if (data.size() > 0) {
+				advisory = data.get(0).getAdvisory();
+				getSherlockActivity().invalidateOptionsMenu();
+			}
 		}
 	}
 
