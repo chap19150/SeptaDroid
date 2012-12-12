@@ -3,7 +3,9 @@ package com.chapslife.septatest.fragments;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -21,8 +24,9 @@ import com.actionbarsherlock.view.MenuItem;
 import com.chapslife.septatest.R;
 import com.chapslife.septatest.adapters.RailScheduleAdapter;
 import com.chapslife.septatest.domains.Advisory;
-import com.chapslife.septatest.domains.BusStop;
+import com.chapslife.septatest.domains.Favorite;
 import com.chapslife.septatest.domains.RailTrip;
+import com.chapslife.septatest.helpers.FavoritesHelper;
 import com.chapslife.septatest.loaders.RailScheduleLoader;
 import com.chapslife.septatest.utils.Constants;
 import com.chapslife.septatest.utils.Logger;
@@ -31,7 +35,8 @@ public class RailScheduleFragment extends BaseFragment implements
 		LoaderCallbacks<ArrayList<RailTrip>> {
 
 	private static final int LOAD_SCHEDULES = 0;
-
+	private static final int SHORTCUT_DIALOG = 1;
+	
 	private ListView mListView;
 	private TextView mEmptyList;
 	private LinearLayout mProgressBar;
@@ -39,7 +44,9 @@ public class RailScheduleFragment extends BaseFragment implements
 	private SharedPreferences preferences;
 	private String origStation, destStation = null;
 	private Advisory advisory;
-
+	private Favorite fav;
+	private Boolean favExists = false;
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -75,6 +82,16 @@ public class RailScheduleFragment extends BaseFragment implements
 		// Initialize the Loader.
 		getLoaderManager().initLoader(LOAD_SCHEDULES, null, this);
 		mProgressBar.setVisibility(View.VISIBLE);
+		fav = new Favorite();
+		fav.setIsRail(1);
+		fav.setDestStation(destStation);
+		fav.setOrigStation(origStation);
+		fav.setBusDirectionId("");
+		fav.setBusStopId("");
+		fav.setBusTitle("");
+		fav.setBusStopName("");
+		favExists = FavoritesHelper.checkIfRailFavExists(fav, getActivity().getApplicationContext());
+
 		return root;
 	}
 
@@ -108,6 +125,7 @@ public class RailScheduleFragment extends BaseFragment implements
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
+		getSherlockActivity().getSupportMenuInflater().inflate(R.menu.menu_alert, menu);
 	}
 
 	@Override
@@ -116,13 +134,24 @@ public class RailScheduleFragment extends BaseFragment implements
 		if (advisory != null) {
 			String message = advisory.getAdvisory_message();
 			if (message != null) {
-				if (message.length() > 5) {
-					getSherlockActivity().getSupportMenuInflater().inflate(R.menu.menu_alert, menu);
+				if (message.length() < 5) {
+					menu.findItem(R.id.alert).setVisible(false);
+					menu.findItem(R.id.alert).setEnabled(false);			
+				}else{
+					menu.findItem(R.id.alert).setVisible(true);
+					menu.findItem(R.id.alert).setEnabled(true);
 				}
 
 			}
+		}else{
+			menu.findItem(R.id.alert).setVisible(false);
+			menu.findItem(R.id.alert).setEnabled(false);
 		}
-
+		if(favExists){
+			menu.findItem(R.id.fav).setIcon(R.drawable.ic_action_star_10);
+		}else{
+			menu.findItem(R.id.fav).setIcon(R.drawable.ic_action_star_0);
+		}
 	}
 
 	@Override
@@ -132,8 +161,53 @@ public class RailScheduleFragment extends BaseFragment implements
 		case R.id.alert:
 			showAdvisoryDialog("Advisory", advisory.getAdvisory_message(), "Ok", null, 0);
 			return true;
+		case R.id.add:
+			showShortcutDialog(origStation, SHORTCUT_DIALOG);
+			return true;
+		case R.id.fav:
+			if(favExists){
+				FavoritesHelper.removeFavorite(fav, getActivity().getApplicationContext());
+				favExists = false;
+			}else{
+				FavoritesHelper.saveFavorite(fav, getActivity().getApplicationContext());
+				favExists = true;
+			}
+			getSherlockActivity().invalidateOptionsMenu();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	public void setShortCut(String stop) {
+		Toast.makeText(getActivity().getApplicationContext(),
+				"Shortcut on Home Screen", Toast.LENGTH_LONG).show();
+		// String thisLAT=getIntent().getStringExtra(septatest.STOP_LAT);
+		// String thisLON=getIntent().getStringExtra(septatest.STOP_LON);
+
+		Intent shortcutIntent = new Intent(Intent.ACTION_VIEW);
+		shortcutIntent.setClassName(getActivity().getPackageName(),
+				".RailScheduleActivity");
+		shortcutIntent.setClassName(getActivity(), getActivity().getClass()
+				.getName());
+		shortcutIntent.putExtra("origStation", origStation);
+		shortcutIntent.putExtra("destStation", destStation);
+		shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		Intent intent = new Intent();
+		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, stop);
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+				Intent.ShortcutIconResource.fromContext(getActivity()
+						.getApplicationContext(), R.drawable.ic_launcher));
+		intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+		getActivity().getApplicationContext().sendBroadcast(intent);
+		getActivity().setResult(Activity.RESULT_OK, intent);
+	}
+	
+	@Override
+	public void onShortcutDialogButtonClicked(int whichButton, String shortcutTitle, int requestId) {
+		if(requestId == SHORTCUT_DIALOG && whichButton == Dialog.BUTTON_POSITIVE){
+			setShortCut(shortcutTitle);
 		}
 	}
 }

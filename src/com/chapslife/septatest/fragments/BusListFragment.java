@@ -40,6 +40,15 @@ public class BusListFragment extends BaseFragment{
 		expandableView = new ExpandableListView(getActivity());
 	}
 
+	/**
+	 * creates new instance of this fragment
+	 * @return the fragment
+	 */
+	public static BusListFragment newInstance(){
+		BusListFragment fragment = new BusListFragment();
+		return fragment;
+	}
+	
 	public void onStart() {
 		super.onStart();
 		if (!checked) {

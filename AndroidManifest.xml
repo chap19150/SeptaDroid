@@ -18,12 +18,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.septadroid" >
+        android:theme="@style/Theme.septadroid"
+        android:allowBackup="false" >
         <activity
             android:name="com.chapslife.septatest.activities.MainActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -36,16 +36,18 @@
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.RailScheduleActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" 
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.BusStopsActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
@@ -53,27 +55,36 @@
         <activity
             android:name="com.chapslife.septatest.activities.BusScheduleActivity"
             android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
-            android:screenOrientation="portrait" >
+            android:exported="true" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.chapslife.septatest.activities.MainActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chapslife.septatest.activities.FavoritesActivity"
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
-		<activity
+        <activity
             android:name="com.chapslife.septatest.activities.AlertListActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.AlertsActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
+
         <meta-data
             android:name="com.mobclix.APPLICATION_ID"
             android:value="858223AC-ECDB-4856-8AA5-6C4E53ED42CC" />
@@ -85,17 +96,28 @@
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity android:name="com.chapslife.septatest.maps.support.SupportMapActivity" />
+        <activity
+            android:name="com.flurry.android.FlurryFullscreenTakeoverActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode" >
+        </activity>
 
         <meta-data
             android:name="ADMOB_PUBLISHER_ID"
             android:value="a14c33d9253ff64" />
+        <meta-data
+            android:name="com.flurry.admob.MY_AD_UNIT_ID"
+            android:value="a14c33d9253ff64" />
+        <meta-data
+            android:name="com.flurry.admob.test"
+            android:value="true" />
 
-        <provider android:name="com.chapslife.septatest.provider.SeptaDataProvider"
-            android:exported="false"
+        <provider
+            android:name="com.chapslife.septatest.provider.SeptaDataProvider"
             android:authorities="com.chapslife.septatest"
-            android:permission="com.chapslife.septatest.WRITE_PERMISSION">
+            android:exported="false"
+            android:permission="com.chapslife.septatest.WRITE_PERMISSION" >
         </provider>
-        
+
         <uses-library android:name="com.google.android.maps" />
     </application>
 

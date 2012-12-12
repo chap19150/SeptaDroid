@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.chapslife.septatest.resolver.AdvisoryColumns;
+import com.chapslife.septatest.resolver.FavoritesColumns;
 
 public class SQLHelper extends SQLiteOpenHelper {
 
@@ -30,12 +31,24 @@ public class SQLHelper extends SQLiteOpenHelper {
 				+ AdvisoryColumns.ALERTS_IS_ALERT + " TEXT, "
 				+ AdvisoryColumns.ALERTS_IS_SUPPEND + " TEXT, "
 				+ AdvisoryColumns.ALERTS_LAST_UPDATED + " TEXT);");
+		
+		db.execSQL("CREATE TABLE " + SeptaDataProvider.FAVORITES_TABLE
+				+ " (" + FavoritesColumns._ID
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ FavoritesColumns.BUS_DIRECTION_ID + " TEXT, "
+				+ FavoritesColumns.BUS_STOP_ID + " TEXT, "
+				+ FavoritesColumns.BUS_TITLE + " TEXT, "
+				+ FavoritesColumns.DEST_STATION + " TEXT, "
+				+ FavoritesColumns.ORIG_STATION + " TEXT, "
+				+ FavoritesColumns.BUS_STOP_NAME + " TEXT, "
+				+ FavoritesColumns.IS_RAIL + " INTEGER);");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		if(oldVersion < newVersion){
 			db.execSQL("DROP TABLE IF EXISTS " + SeptaDataProvider.ADVISORY_TABLE);
+			db.execSQL("DROP TABLE IF EXISTS " + SeptaDataProvider.FAVORITES_TABLE);
 			onCreate(db);
 		}
 

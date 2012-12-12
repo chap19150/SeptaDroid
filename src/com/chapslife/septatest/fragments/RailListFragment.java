@@ -77,6 +77,15 @@ public class RailListFragment extends BaseFragment implements OnClickListener {
 				Context.MODE_PRIVATE);
 	}
 
+	/**
+	 * creates new instance of this fragment
+	 * @return the fragment
+	 */
+	public static RailListFragment newInstance(){
+		RailListFragment fragment = new RailListFragment();
+		return fragment;
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View septaRailListView = inflater.inflate(R.layout.fragment_raillist, container, false);

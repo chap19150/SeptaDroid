@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="content_provider_name">com.chapslife.septatest.provider.SeptaDataProvider</string>
+    <string name="content_provider_authority">com.chapslife.septatest</string>
+    <string name="content_provider_database_name">Septadroid.db</string>
+    <string name="flurry_api_key">4XCTRUIWG322AQHH99TJ</string>
+</resources>

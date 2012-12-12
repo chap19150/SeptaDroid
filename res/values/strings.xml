@@ -14,8 +14,8 @@
     <string name="notif">Notifications</string>
     <string name="notif_enabled">Notifications Enabled</string>
     <string name="pull_down">Pull down to refresh data</string>
-    
-    <string name="content_provider_name">com.chapslife.septatest.provider.SeptaDataProvider</string>
-    <string name="content_provider_authority">com.chapslife.septatest</string>
-    <string name="content_provider_database_name">Septadroid.db</string>
+    <string name="shortcut_hint">Shortcut Name</string>
+    <string name="shortcut_add">Add Shortcut</string>
+    <string name="shortcut_cancel">Cancel</string>
+    <string name="shortcut_title">Enter name of shortcut:</string>
 </resources>

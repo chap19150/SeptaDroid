@@ -19,7 +19,7 @@ private static String LOG_TAG = DataSource.class.getSimpleName();
 	
 	private static SQLHelper sqlHelper;
 	private static String DATABASE_NAME;
-	private static final int VERSION = 3;
+	private static final int VERSION = 6;
 
 	private static DataSource DATA_SOURCE;
 	

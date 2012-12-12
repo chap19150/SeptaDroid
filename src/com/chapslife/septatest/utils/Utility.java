@@ -9,6 +9,9 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.location.Location;
 import android.util.Log;
 
 import com.chapslife.septatest.kml.parser.NavigationDataSet;
@@ -62,7 +65,25 @@ public class Utility {
 
 		return navigationDataSet;
 	}
-	
+
+	public static void saveCoordinatesInPreferences(Context context, float latitude, float longitude) {
+		SharedPreferences prefs = context.getSharedPreferences(Constants.PREFERENCES_KEY,
+				Context.MODE_PRIVATE);
+		SharedPreferences.Editor prefsEditor = prefs.edit();
+		prefsEditor.putFloat(Constants.EXTRA_BUS_LAT, latitude);
+		prefsEditor.putFloat(Constants.EXTRA_BUS_LON, longitude);
+		prefsEditor.commit();
+	}
+
+	public static Location retrievelocationFromPreferences(Context context) {
+		SharedPreferences prefs = context.getSharedPreferences(Constants.PREFERENCES_KEY,
+				Context.MODE_PRIVATE);
+		Location location = new Location("POINT_LOCATION");
+		location.setLatitude(prefs.getFloat(Constants.EXTRA_BUS_LAT, 0));
+		location.setLongitude(prefs.getFloat(Constants.EXTRA_BUS_LON, 0));
+		return location;
+	}
+
 	public static GeoPoint getPoint(double lat, double lon) {
 		return (new GeoPoint((int) (lat * 1000000.0), (int) (lon * 1000000.0)));
 	}

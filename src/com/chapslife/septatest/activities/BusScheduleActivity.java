@@ -9,6 +9,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.chapslife.septatest.R;
 import com.chapslife.septatest.domains.BusStop;
 import com.chapslife.septatest.fragments.BusScheduleFragment;
+import com.chapslife.septatest.utils.Constants;
 
 public class BusScheduleActivity extends BaseActivity{
 	@Override
@@ -23,6 +24,13 @@ public class BusScheduleActivity extends BaseActivity{
 		setContentView(R.layout.activity_bus_schedules);
 		configureActionBar();
 		BusStop busStop = getIntent().getParcelableExtra(BusStop.BUS_STOP);
+		if(busStop == null){
+			busStop = new BusStop();
+			busStop.setDirectionId(getIntent().getStringExtra(Constants.EXTRA_BUS_DIRECTION));
+			busStop.setStop_id(getIntent().getStringExtra(Constants.EXTRA_STOP_ID));
+			busStop.setTitle(getIntent().getStringExtra(Constants.EXTRA_BUS_TITLE));
+			busStop.setStop_name(getIntent().getStringExtra(Constants.EXTRA_STOP_NAME));
+		}
 		getSupportActionBar().setTitle(busStop.getStop_name());
 		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 		BusScheduleFragment fragment = BusScheduleFragment.newInstance(busStop);

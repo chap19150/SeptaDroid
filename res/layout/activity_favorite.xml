@@ -3,16 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <FrameLayout
+    <fragment
         android:id="@+id/advert_fragment"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        class="com.chapslife.septatest.fragments.MobclixFragment" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <fragment
+        android:id="@+id/favs_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/advert_fragment" />
+        android:layout_above="@+id/advert_fragment"
+        class="com.chapslife.septatest.fragments.FavoritesFragment" />
 
 </RelativeLayout>

@@ -18,4 +18,5 @@ public interface DialogListener {
 	 */
 	void onCancel(int requestId);
 	
+	void onShortcutDialogButtonClicked(int whichButton, String shortcutTitle, int requestId);
 }

@@ -19,8 +19,10 @@ public class SeptaDataProvider extends ContentProvider{
 	private static String authority;
 	
 	public static final String ADVISORY_TABLE = "AdvisoryTable";
+	public static final String FAVORITES_TABLE = "FavoritesTable";
 	
 	private static final int ADVISORY = 1;
+	private static final int FAVORITES = 2;
 	
 	@Override
 	public boolean onCreate() {
@@ -43,6 +45,8 @@ public class SeptaDataProvider extends ContentProvider{
 		switch (uriMatcher.match(uri)){
 		case ADVISORY:
 			return ADVISORY_TABLE;
+		case FAVORITES:
+			return FAVORITES_TABLE;
 		default:
 			throw new IllegalArgumentException("Could not match Uri:	" + uri);
 		}
@@ -54,6 +58,7 @@ public class SeptaDataProvider extends ContentProvider{
 	private void initUriMatchers() {
 		//These paths MUST NOT have a leading slash, eg: "path" not "/path"
 		uriMatcher.addURI(authority, ADVISORY_TABLE, ADVISORY);
+		uriMatcher.addURI(authority, FAVORITES_TABLE, FAVORITES);
 	}
 	
 	@Override

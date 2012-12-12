@@ -7,4 +7,15 @@
         android:showAsAction="always"
         android:title="Alerts"/>
 
+    <item
+        android:id="@+id/fav"
+        android:icon="@drawable/ic_action_star_0"
+        android:showAsAction="always"
+        android:title="Favorite"/>
+    
+   <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_action_add"
+        android:showAsAction="ifRoom"
+        android:title="Add Shortcut"/>
 </menu>

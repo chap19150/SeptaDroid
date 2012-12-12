@@ -9,28 +9,34 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.chapslife.septatest.R;
+import com.chapslife.septatest.adapters.TabsAdapter;
 import com.chapslife.septatest.domains.Alerts;
 import com.chapslife.septatest.fragments.BusListFragment;
 import com.chapslife.septatest.fragments.MobclixFragment;
 import com.chapslife.septatest.fragments.RailListFragment;
 import com.chapslife.septatest.fragments.SubwayListFragment;
 import com.chapslife.septatest.loaders.AdvisoryListLoader;
-import com.chapslife.septatest.loaders.BusScheduleLoader;
 import com.chapslife.septatest.utils.Logger;
 
-public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayList<Alerts>>{
+public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayList<Alerts>>, OnPageChangeListener, TabListener{
 
 	private Tab mRailTab;
 	private Tab mSubwayTab;
 	private Tab mBusTab;
+	
+	private TabsAdapter mAdapter;
+	private ViewPager mPager;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,9 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 	        case R.id.main_alert:
 	            startActivity(new Intent(this, AlertListActivity.class));
 	            return true;
+	        case R.id.main_favs:
+	            startActivity(new Intent(this, FavoritesActivity.class));
+	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -75,88 +84,30 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		
 		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		mAdapter = new TabsAdapter(getSupportFragmentManager(), getApplicationContext());
+		mPager = (ViewPager) findViewById(R.id.pager);
+		mPager.setAdapter(mAdapter);
+		mPager.setOnPageChangeListener(this);
 		mRailTab = getSupportActionBar()
 				.newTab()
 				.setText("RAIL")
-				.setTabListener(
-						new TabListener<RailListFragment>(this, "RAIL",
-								RailListFragment.class));
+				.setTabListener(this);
 		
 		
 		mSubwayTab = getSupportActionBar()
 				.newTab()
-				.setText("SUBWAY\nTROLLEY")
-				.setTabListener(
-						new TabListener<SubwayListFragment>(this, "SUBWAY",
-								SubwayListFragment.class));
+				.setText("SUBWAY\\TROLLEY")
+				.setTabListener(this);
 		mBusTab = getSupportActionBar()
 				.newTab()
 				.setText("BUS")
-				.setTabListener(
-						new TabListener<BusListFragment>(this,
-								"BUS", BusListFragment.class));
+				.setTabListener(this);
 		getSupportActionBar().addTab(mRailTab);
 		getSupportActionBar().addTab(mSubwayTab);
 		getSupportActionBar().addTab(mBusTab);
 		// Initialize the Loader.
 		getSupportLoaderManager().initLoader(0, null, this);
-	}
-	
-	/**
-	 * A tablistener for the tab
-	 * @author kchapman
-	 *
-	 * @param <T> the fragment for the tab
-	 */
-	public static class TabListener<T extends SherlockFragment> implements
-			ActionBar.TabListener {
-
-		private Fragment mFragment;
-		private final String mTag;
-		private final Class<T> mClass;
-		private MainActivity mActivity;
-		/**
-		 * Constructor used each time a new tab is created.
-		 * 
-		 * @param tag
-		 *            The identifier tag for the fragment
-		 * @param clz
-		 *            The fragment's Class, used to instantiate the fragment
-		 */
-		public TabListener(MainActivity activity, String tag, Class<T> clz) {
-			mActivity = activity;
-			mTag = tag;
-			mClass = clz;
-		}
-		
-		@Override
-		public void onTabSelected(Tab tab, FragmentTransaction ft) {
-			// Check if the fragment is already initialized
-			if (mFragment == null) {
-				// If not, instantiate and add it to the activity
-				mFragment = Fragment.instantiate(mActivity, mClass.getName());
-				ft.add(R.id.content_fragment, mFragment, mTag);
-			} else {
-				// If it exists, simply attach it in order to show it
-				ft.show(mFragment);
-			}
-		}
-
-		@Override
-		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-			ft.hide(mFragment);
-//			if (mFragment != null) {
-//				// Detach the fragment, because another one is being attached
-//				ft.detach(mFragment);
-//			}
-		}
-
-		@Override
-		public void onTabReselected(Tab tab, FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
-		}
-		
 	}
 
 	@Override
@@ -173,6 +124,39 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 
 	@Override
 	public void onLoaderReset(Loader<ArrayList<Alerts>> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPageSelected(int position) {
+		getSupportActionBar().setSelectedNavigationItem(position);
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		mPager.setCurrentItem(tab.getPosition());
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		
+	}
+
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
 	}
