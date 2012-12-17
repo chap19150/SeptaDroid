@@ -95,13 +95,13 @@ public class RailListFragment extends BaseFragment implements OnClickListener {
 		String origFav = preferences.getString("origStation", null);
 		String destFav = preferences.getString("destStation", null);
 		ArrayAdapter<String> origAdapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, railStops);
+				R.layout.list_item_textview, railStops);
 
 		origSpinner.setAdapter(origAdapter);
 
 		destSpinner = (Spinner) septaRailListView.findViewById(R.id.term_list);
 		ArrayAdapter<String> destAdapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, railStops);
+				R.layout.list_item_textview, railStops);
 		destSpinner.setAdapter(destAdapter);
 		if (origFav != null) {
 			int pos = origAdapter.getPosition(origFav);

@@ -72,6 +72,9 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 	        case R.id.main_favs:
 	            startActivity(new Intent(this, FavoritesActivity.class));
 	            return true;
+	        case R.id.main_settings:
+	            startActivity(new Intent(this, NotificationActivity.class));
+	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

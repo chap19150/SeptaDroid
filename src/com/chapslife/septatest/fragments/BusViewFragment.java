@@ -195,10 +195,10 @@ public class BusViewFragment extends SupportMapFragment implements OnItemSelecte
 							busAnnotations.add(new Annotation(p, train + dest + nextStop, late));
 						}else{
 							if(i == 0){
-								navSet = ride.getNavDataSet();
+								//navSet = ride.getNavDataSet();
 							}
 							if(isBus && navSet != null){
-								drawPath(navSet, Color.BLACK, mMapView);
+								//drawPath(navSet, Color.BLACK, mMapView);
 							}
 							lon = Double.valueOf(ride.getLng());
 							String block = "Block #" + ride.getBlockID() + "\n";
