@@ -28,13 +28,15 @@
     <uses-permission android:name="com.chapslife.septatest.permission.C2D_MESSAGE" />
 
     <application
+        android:name="SeptaApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.septadroid" android:name="SeptaApplication">
+        android:theme="@style/Theme.septadroid" >
         <activity
             android:name="com.chapslife.septatest.activities.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +46,8 @@
         <activity
             android:name="com.chapslife.septatest.activities.RailScheduleActivity"
             android:exported="true"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
@@ -55,7 +58,8 @@
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.BusStopsActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
@@ -63,7 +67,8 @@
         <activity
             android:name="com.chapslife.septatest.activities.BusScheduleActivity"
             android:exported="true"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
@@ -74,36 +79,40 @@
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.FavoritesActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.MapActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" 
-            android:screenOrientation="landscape">
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.AlertListActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.AlertsActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.NotificationActivity"
-            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
@@ -141,12 +150,12 @@
             android:exported="false"
             android:permission="com.chapslife.septatest.WRITE_PERMISSION" >
         </provider>
-
-        <provider android:name="com.urbanairship.UrbanAirshipProvider"
+        <provider
+            android:name="com.urbanairship.UrbanAirshipProvider"
             android:authorities="com.chapslife.septatest.urbanairship.provider"
             android:exported="false"
             android:multiprocess="true" />
-        
+
         <!-- REQUIRED for Urban Airship GCM -->
         <receiver android:name="com.urbanairship.CoreReceiver" />
         <receiver
