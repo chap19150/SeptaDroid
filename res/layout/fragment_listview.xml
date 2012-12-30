@@ -7,7 +7,9 @@
         android:id="@+id/listview_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:dividerHeight="2dp"
+        android:divider="@color/button_septadroid" />
 
     <TextView
         android:id="@+id/listview_empty"

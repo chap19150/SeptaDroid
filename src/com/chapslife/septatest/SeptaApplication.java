@@ -1,5 +1,6 @@
 package com.chapslife.septatest;
 
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import android.app.Application;
+import android.view.ViewConfiguration;
 
 import com.chapslife.septatest.utils.Logger;
 import com.urbanairship.UAirship;
@@ -31,7 +33,7 @@ public class SeptaApplication extends Application {
 			s.add("5.0.0.0");
 			// PushManager.shared().setIntentReceiver(IntentReceiver.class);
 			PushPreferences pushPrefs = PushManager.shared().getPreferences();
-			SimpleDateFormat formatter = new SimpleDateFormat("hh:mm",Locale.US);
+			SimpleDateFormat formatter = new SimpleDateFormat("hh:mm", Locale.US);
 			Date startDate;
 			Date endDate;
 			Logger.i("PUSH ID", "My Application onCreate - App APID: " + pushPrefs.getPushId());
@@ -46,8 +48,18 @@ public class SeptaApplication extends Application {
 			}
 			pushPrefs.setQuietTimeEnabled(true);
 			pushPrefs.setTags(s);
+			Logger.d("ALIAS", pushPrefs.getAlias());
 		}
-
+		try {
+			ViewConfiguration config = ViewConfiguration.get(this);
+			Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+			if (menuKeyField != null) {
+				menuKeyField.setAccessible(true);
+				menuKeyField.setBoolean(config, false);
+			}
+		} catch (Exception ex) {
+			// Ignore
+		}
 		super.onCreate();
 	}
 }

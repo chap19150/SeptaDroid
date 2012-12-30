@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/reverse"
+        android:icon="@drawable/ic_action_reload"
+        android:showAsAction="always"
+        android:title="Reverse"/>
+    <item
+        android:id="@+id/alert"
+        android:icon="@drawable/ic_action_advisory"
+        android:showAsAction="always"
+        android:title="Alerts"/>
+    <item
+        android:id="@+id/fav"
+        android:icon="@drawable/ic_action_star_0"
+        android:showAsAction="ifRoom"
+        android:title="Favorite"/>
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_action_add"
+        android:showAsAction="ifRoom"
+        android:title="Add Shortcut"/>
+
+</menu>

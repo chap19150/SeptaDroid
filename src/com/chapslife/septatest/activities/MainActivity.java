@@ -66,6 +66,9 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
+	    case R.id.main_map:
+            startActivity(new Intent(this, MapActivity.class));
+            return true;
 	        case R.id.main_alert:
 	            startActivity(new Intent(this, AlertListActivity.class));
 	            return true;
@@ -86,29 +89,29 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 		getSupportActionBar().setIcon(R.drawable.ic_launcher);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		
-		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		mAdapter = new TabsAdapter(getSupportFragmentManager(), getApplicationContext());
 		mPager = (ViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
-		mPager.setOnPageChangeListener(this);
-		mRailTab = getSupportActionBar()
-				.newTab()
-				.setText("RAIL")
-				.setTabListener(this);
-		
-		
-		mSubwayTab = getSupportActionBar()
-				.newTab()
-				.setText("SUBWAY\\TROLLEY")
-				.setTabListener(this);
-		mBusTab = getSupportActionBar()
-				.newTab()
-				.setText("BUS")
-				.setTabListener(this);
-		getSupportActionBar().addTab(mRailTab);
-		getSupportActionBar().addTab(mSubwayTab);
-		getSupportActionBar().addTab(mBusTab);
+//		mPager.setOnPageChangeListener(this);
+//		mRailTab = getSupportActionBar()
+//				.newTab()
+//				.setText("RAIL")
+//				.setTabListener(this);
+//		
+//		
+//		mSubwayTab = getSupportActionBar()
+//				.newTab()
+//				.setText("SUBWAY\\TROLLEY")
+//				.setTabListener(this);
+//		mBusTab = getSupportActionBar()
+//				.newTab()
+//				.setText("BUS")
+//				.setTabListener(this);
+//		getSupportActionBar().addTab(mRailTab);
+//		getSupportActionBar().addTab(mSubwayTab);
+//		getSupportActionBar().addTab(mBusTab);
 		// Initialize the Loader.
 		getSupportLoaderManager().initLoader(0, null, this);
 	}

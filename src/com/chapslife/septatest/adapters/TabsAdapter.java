@@ -9,10 +9,10 @@ import com.chapslife.septatest.fragments.BusListFragment;
 import com.chapslife.septatest.fragments.RailListFragment;
 import com.chapslife.septatest.fragments.SubwayListFragment;
 
-public class TabsAdapter extends FragmentStatePagerAdapter{
+public class TabsAdapter extends FragmentStatePagerAdapter {
 
 	private Context mContext;
-	
+
 	public TabsAdapter(FragmentManager fm, Context context) {
 		super(fm);
 		mContext = context;
@@ -20,7 +20,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter{
 
 	@Override
 	public Fragment getItem(int position) {
-		switch(position){
+		switch (position) {
 		case 0:
 			return RailListFragment.newInstance();
 		case 1:
@@ -37,4 +37,16 @@ public class TabsAdapter extends FragmentStatePagerAdapter{
 		return 3;
 	}
 
+	@Override
+	public CharSequence getPageTitle(int position) {
+		switch (position) {
+		case 0:
+			return "Rail";
+		case 1:
+			return "Subway - Trolley";
+		case 2:
+			return "Bus";
+		}
+		return null;
+	}
 }

@@ -84,8 +84,6 @@ public class InfoDetailsAdapter extends BaseExpandableListAdapter {
         text.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);  
         // Set the text starting position  
         text.setPadding(63, 0, 0, 0);  
-        text.setTextColor(Color.BLACK);
-        text.setTextSize(19); 
         text.setText(s);  
         return text;  
     }  

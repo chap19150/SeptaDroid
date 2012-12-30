@@ -80,6 +80,14 @@
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
+            android:name="com.chapslife.septatest.activities.MapActivity"
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity" 
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.chapslife.septatest.activities.MainActivity" />
+        </activity>
+        <activity
             android:name="com.chapslife.septatest.activities.AlertListActivity"
             android:parentActivityName="com.chapslife.septatest.activities.MainActivity" >
             <meta-data

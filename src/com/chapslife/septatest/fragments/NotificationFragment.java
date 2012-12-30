@@ -23,7 +23,7 @@ import com.urbanairship.push.PushPreferences;
 
 public class NotificationFragment extends BaseFragment implements OnItemClickListener{
 
-	String[] alertsList = { "Buses", "10 Trolley", "11 Trolley", "13 Trolley",
+	String[] alertsList = { "No Notifications","Buses", "10 Trolley", "11 Trolley", "13 Trolley",
 			"15 Trolley", "34 Trolley", "36 Trolley", "Route 101", "Route 102",
 			"Airport Line", "Chestnut Hill East", "Chestnut Hill West",
 			"Cynwyd", "Fox Chase", "Doylestown", "Norristown", "Elwyn",
@@ -44,7 +44,7 @@ public class NotificationFragment extends BaseFragment implements OnItemClickLis
 		preferences = getActivity().getSharedPreferences(
 				Constants.PREFERENCES_KEY, Context.MODE_PRIVATE);
 		pushPrefs = PushManager.shared().getPreferences();
-		checkedPos = preferences.getInt("checkedPos", -1);
+		checkedPos = preferences.getInt("checkedPos", 0);
 	}
 	
 	@Override
@@ -60,15 +60,18 @@ public class NotificationFragment extends BaseFragment implements OnItemClickLis
 		mListView.addFooterView(rectAdView);
 		mListView.setOnItemClickListener(this);
 		mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		if(checkedPos != -1){
-			mListView.setItemChecked(checkedPos, true);
-		}
+		mListView.setItemChecked(checkedPos, true);
 		return root;
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-		pushPrefs.setAlias((String) adapter.getItemAtPosition(position));
-		Logger.i("PUSH ID" , "App APID: " + pushPrefs.getPushId());
+		if(position == 0){
+			pushPrefs.setAlias("");
+		}else{
+			pushPrefs.setAlias((String) adapter.getItemAtPosition(position));
+		}	
+		Logger.d("ALIAS", pushPrefs.getAlias());
+		preferences.edit().putInt("checkedPos", position).commit();
 	}
 }

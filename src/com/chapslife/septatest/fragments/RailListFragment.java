@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -64,7 +64,7 @@ public class RailListFragment extends BaseFragment implements OnClickListener {
 
 	private SharedPreferences preferences;
 
-	private Button mSwitchButton;
+	private ImageView mSwitchButton;
 	private Spinner origSpinner;
 	private Spinner destSpinner;
 
@@ -90,7 +90,7 @@ public class RailListFragment extends BaseFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View septaRailListView = inflater.inflate(R.layout.fragment_raillist, container, false);
 		origSpinner = (Spinner) septaRailListView.findViewById(R.id.orig_list);
-		mSwitchButton = (Button) septaRailListView.findViewById(R.id.switch_button);
+		mSwitchButton = (ImageView) septaRailListView.findViewById(R.id.switch_button);
 		mSwitchButton.setOnClickListener(this);
 		String origFav = preferences.getString("origStation", null);
 		String destFav = preferences.getString("destStation", null);

@@ -32,8 +32,6 @@ public class RailScheduleAdapter extends ArrayAdapter<RailTrip> {
 		this.items = items;
 		this.context = context;
 		preferences = context.getSharedPreferences(Constants.PREFERENCES_KEY, Context.MODE_PRIVATE);
-		origStation = preferences.getString("origStation", "");
-		destStation = preferences.getString("destStation", "");
 	}
 
 	class ViewHolder {
@@ -128,5 +126,29 @@ public class RailScheduleAdapter extends ArrayAdapter<RailTrip> {
 		}
 
 		return v;
+	}
+	/**
+	 * @return the origStation
+	 */
+	public String getOrigStation() {
+		return origStation;
+	}
+	/**
+	 * @param origStation the origStation to set
+	 */
+	public void setOrigStation(String origStation) {
+		this.origStation = origStation;
+	}
+	/**
+	 * @return the destStation
+	 */
+	public String getDestStation() {
+		return destStation;
+	}
+	/**
+	 * @param destStation the destStation to set
+	 */
+	public void setDestStation(String destStation) {
+		this.destStation = destStation;
 	}
 }

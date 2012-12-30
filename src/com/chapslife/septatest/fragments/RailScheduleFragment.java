@@ -77,7 +77,9 @@ public class RailScheduleFragment extends BaseFragment implements
 		mProgressBar = (LinearLayout) root.findViewById(R.id.listview_progress);
 
 		mAdapter = new RailScheduleAdapter(getActivity(), 0, null);
-
+		mAdapter.setDestStation(destStation);
+		mAdapter.setOrigStation(origStation);
+		
 		mListView.setAdapter(mAdapter);
 		// Initialize the Loader.
 		getLoaderManager().initLoader(LOAD_SCHEDULES, null, this);
@@ -125,7 +127,7 @@ public class RailScheduleFragment extends BaseFragment implements
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-		getSherlockActivity().getSupportMenuInflater().inflate(R.menu.menu_alert, menu);
+		getSherlockActivity().getSupportMenuInflater().inflate(R.menu.menu_rail, menu);
 	}
 
 	@Override
@@ -158,6 +160,16 @@ public class RailScheduleFragment extends BaseFragment implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
 		switch (item.getItemId()) {
+		case R.id.reverse:
+			String temp = origStation;
+			origStation = destStation;
+			destStation = temp;
+			temp = null;
+			mAdapter.setDestStation(destStation);
+			mAdapter.setOrigStation(origStation);
+			mProgressBar.setVisibility(View.VISIBLE);
+			getLoaderManager().restartLoader(LOAD_SCHEDULES, null, this);
+			return true;
 		case R.id.alert:
 			showAdvisoryDialog("Advisory", advisory.getAdvisory_message(), "Ok", null, 0);
 			return true;

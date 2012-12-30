@@ -19,4 +19,5 @@
 <resources>
     <color name="pressed_septadroid">#CC33B5E5</color>
      <color name="button_septadroid">#CC575757</color>
+     <color name="text">#CC414141</color>
 </resources>

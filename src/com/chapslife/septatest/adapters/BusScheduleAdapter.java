@@ -54,7 +54,6 @@ public class BusScheduleAdapter extends ArrayAdapter<BusTrip> {
             	LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.list_item_bus_trip, parent,false);
                 final ViewHolder viewHolder = new ViewHolder();
-                viewHolder.stopname = (TextView) v.findViewById(R.id.stopname);
                 viewHolder.day = (TextView) v.findViewById(R.id.day);
                 viewHolder.date = (TextView) v.findViewById(R.id.date);
                 v.setTag(viewHolder);
@@ -62,7 +61,6 @@ public class BusScheduleAdapter extends ArrayAdapter<BusTrip> {
             	v = convertView;
             }
             ViewHolder holder = (ViewHolder) v.getTag();
-            holder.stopname.setText(items.get(position).getStopName());
             holder.day.setText(items.get(position).getDay());
             holder.date.setText(items.get(position).getDate());
             

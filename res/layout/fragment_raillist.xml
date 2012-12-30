@@ -15,13 +15,14 @@
         android:spinnerMode="dropdown"
         android:background="@drawable/spinner_background_holo_dark" />
 
-    <Button
+    <ImageView
         android:id="@+id/switch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/ic_action_example" />
+        android:src="@drawable/ic_action_reload_dark"
+        android:scaleType="fitCenter" />
 
     <Spinner
         android:id="@+id/term_list"
@@ -34,6 +35,7 @@
 
     <Button
         android:id="@+id/next_button"
+        android:background="@drawable/btn_default_holo_light"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
