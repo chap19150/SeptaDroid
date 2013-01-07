@@ -94,6 +94,7 @@ public class MainActivity extends BaseActivity implements LoaderCallbacks<ArrayL
 		mAdapter = new TabsAdapter(getSupportFragmentManager(), getApplicationContext());
 		mPager = (ViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
+		mPager.setOffscreenPageLimit(3);
 //		mPager.setOnPageChangeListener(this);
 //		mRailTab = getSupportActionBar()
 //				.newTab()

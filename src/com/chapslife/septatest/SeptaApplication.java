@@ -48,7 +48,6 @@ public class SeptaApplication extends Application {
 			}
 			pushPrefs.setQuietTimeEnabled(true);
 			pushPrefs.setTags(s);
-			Logger.d("ALIAS", pushPrefs.getAlias());
 		}
 		try {
 			ViewConfiguration config = ViewConfiguration.get(this);
