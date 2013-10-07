@@ -28,5 +28,8 @@ public interface Constants {
 	public static final String URL = "http://www.7677Mobile.com";
 	public static final String SEPTA_HACKATHON_URL = "http://www3.septa.org/hackathon";
 	public static final String PREFERENCES_KEY = "com.chapslife.septatest";
+	public static final String RAIL_CHOSEN = "RAIL_CHOSEN";
+	public static final String SUB_CHOSEN = "SUB_CHOSEN";
+	public static final String BUS_CHOSEN = "BUS_CHOSEN";
 	public static final String URL_ANDROID = "http://market.android.com/details?id=com.chapslife.SeptaDroidPro";
 }

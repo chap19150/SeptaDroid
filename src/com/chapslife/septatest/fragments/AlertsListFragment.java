@@ -1,26 +1,20 @@
 package com.chapslife.septatest.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.chapslife.septatest.R;
 import com.chapslife.septatest.activities.AlertsActivity;
-import com.chapslife.septatest.listeners.MobclixListener;
 import com.chapslife.septatest.utils.Constants;
-import com.mobclix.android.sdk.MobclixIABRectangleMAdView;
 
 public class AlertsListFragment extends BaseFragment implements OnItemClickListener {
 
@@ -31,14 +25,11 @@ public class AlertsListFragment extends BaseFragment implements OnItemClickListe
 			"Paoli", "Trenton", "Warminster", "West Trenton", "Wilmington",
 			"Market-Frankford Line", "Broad Street Line", "NHSL" };
 	private ArrayAdapter<String> adapter;
-	private MobclixIABRectangleMAdView rectAdView;
 	private ListView mListView;
 	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		rectAdView = new MobclixIABRectangleMAdView(getActivity());
-		rectAdView.addMobclixAdViewListener(new MobclixListener());
 	}
 
 	@Override
@@ -51,7 +42,6 @@ public class AlertsListFragment extends BaseFragment implements OnItemClickListe
 		adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, alertsList);
 		mListView.setAdapter(adapter);
-		mListView.addFooterView(rectAdView);
 		mListView.setOnItemClickListener(this);
 		return root;
 	}

@@ -43,7 +43,7 @@ public class RailListFragment extends BaseFragment implements OnClickListener {
 			"Churchmans Crossing", "Claymont", "Clifton-Aldan", "Colmar", "Conshohocken",
 			"Cornwells Heights", "Crestmont", "Croydon", "Crum Lynne", "Curtis Park", "Cynwyd",
 			"Darby", "Daylesford", "Delaware Valley College", "Devon", "Downingtown", "Doylestown",
-			"East Falls", "Eastwick Station", "Eddington", "Eddystone", "Elkins Park",
+			"East Falls", "Eastwick Station", "Eddington", "Eddystone", "Elkins Park", "Elm St",
 			"Elwyn Station", "Exton", "Fern Rock TC", "Fernwood", "Folcroft", "Forest Hills",
 			"Ft Washington", "Fortuna", "Fox Chase", "Germantown", "Gladstone", "Glenolden",
 			"Glenside", "Gravers", "Gwynedd Valley", "Hatboro", "Haverford", "Highland",

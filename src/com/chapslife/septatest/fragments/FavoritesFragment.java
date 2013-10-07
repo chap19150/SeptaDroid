@@ -71,7 +71,7 @@ public class FavoritesFragment extends BaseFragment implements LoaderCallbacks<A
 
 	@Override
 	public void onLoaderReset(Loader<ArrayList<Favorite>> loader) {
-		mAdapter.setItems(null);
+		//mAdapter.setItems(null);
 	}
 
 	@Override

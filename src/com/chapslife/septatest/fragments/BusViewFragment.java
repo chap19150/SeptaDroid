@@ -120,7 +120,7 @@ public class BusViewFragment extends SupportMapFragment implements OnItemSelecte
 
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-		route = mAdapter.getItem(position - 1);
+		route = mAdapter.getItem(position);
 		mMenuDrawer.closeMenu(true);
 		getLoaderManager().restartLoader(LOAD_LIVE, null, this);
 

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        class="com.chapslife.septatest.fragments.MobclixFragment" />
+        class="com.chapslife.septatest.fragments.MediationFragment" />
 
     <FrameLayout
         android:id="@+id/bus_schedule_fragment"

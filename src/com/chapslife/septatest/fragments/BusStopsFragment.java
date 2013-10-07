@@ -85,7 +85,7 @@ public class BusStopsFragment extends BaseFragment implements LoaderCallbacks<Ar
 
 	@Override
 	public void onLoaderReset(Loader<ArrayList<BusStop>> data) {
-		mAdapter.setItems(null);
+		//mAdapter.setItems(null);
 	}
 
 	@Override

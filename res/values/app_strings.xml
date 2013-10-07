@@ -4,4 +4,17 @@
     <string name="content_provider_authority">com.chapslife.septatest</string>
     <string name="content_provider_database_name">Septadroid.db</string>
     <string name="flurry_api_key">4XCTRUIWG322AQHH99TJ</string>
+    <string name="mediation_id">610771c529d547ce</string>
+    <string name="admob_id">a14c33d9253ff64</string>
+    <string name="mobfox_id">82eff114af15349b9aa1ee581eff4543</string>
+    <string name="mopub_id">933afc9c5ccb11e281c11231392559e4</string>
+    
+    <string-array name="map_names">
+        <item>Full System</item>
+        <item>Broad Street Line</item>
+        <item>Market-Frankford</item>
+        <item>NHSL</item>
+        <item>Trolleys</item>
+        <item>Rts 101,102</item>
+    </string-array>
 </resources>

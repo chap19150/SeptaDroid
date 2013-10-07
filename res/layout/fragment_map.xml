@@ -7,7 +7,8 @@
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="0xqcTsZrX1ssduoQND-IauZhJyO9FN1bcE-rYuw"
+        android:apiKey="0xqcTsZrX1ssgGaIrd5c4MVQCDsGJG66OxphMWw"
         android:clickable="true" />
+<!-- demo android:apiKey="0xqcTsZrX1ssduoQND-IauZhJyO9FN1bcE-rYuw"      -->
 
 </FrameLayout>

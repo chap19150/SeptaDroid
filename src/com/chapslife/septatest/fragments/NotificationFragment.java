@@ -14,10 +14,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.chapslife.septatest.R;
-import com.chapslife.septatest.listeners.MobclixListener;
 import com.chapslife.septatest.utils.Constants;
 import com.chapslife.septatest.utils.Logger;
-import com.mobclix.android.sdk.MobclixIABRectangleMAdView;
 import com.urbanairship.push.PushManager;
 import com.urbanairship.push.PushPreferences;
 
@@ -30,7 +28,6 @@ public class NotificationFragment extends BaseFragment implements OnItemClickLis
 			"Paoli", "Trenton", "Warminster", "West Trenton", "Wilmington",
 			"Market-Frankford Line", "Broad Street Line", "NHSL" };
 	private ArrayAdapter<String> adapter;
-	private MobclixIABRectangleMAdView rectAdView;
 	private ListView mListView;
 	private PushPreferences pushPrefs;
 	private SharedPreferences preferences;
@@ -39,8 +36,6 @@ public class NotificationFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		rectAdView = new MobclixIABRectangleMAdView(getActivity());
-		rectAdView.addMobclixAdViewListener(new MobclixListener());
 		preferences = getActivity().getSharedPreferences(
 				Constants.PREFERENCES_KEY, Context.MODE_PRIVATE);
 		pushPrefs = PushManager.shared().getPreferences();
@@ -57,8 +52,7 @@ public class NotificationFragment extends BaseFragment implements OnItemClickLis
 		adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_checked, alertsList);
 		mListView.setAdapter(adapter);
-		mListView.addFooterView(rectAdView);
-		mListView.setOnItemClickListener(this);
+ 		mListView.setOnItemClickListener(this);
 		mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		mListView.setItemChecked(checkedPos, true);
 		return root;

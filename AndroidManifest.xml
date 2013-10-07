@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chapslife.septatest"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="40"
+    android:versionName="4.2.0.2" >
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
@@ -55,6 +55,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chapslife.septatest.activities.SystemMapActivity"
+            android:parentActivityName="com.chapslife.septatest.activities.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
         <activity
             android:name="com.chapslife.septatest.activities.BusStopsActivity"
@@ -117,32 +125,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chapslife.septatest.activities.MainActivity" />
         </activity>
-
-        <meta-data
-            android:name="com.mobclix.APPLICATION_ID"
-            android:value="858223AC-ECDB-4856-8AA5-6C4E53ED42CC" />
-
         <activity
-            android:name="com.mobclix.android.sdk.MobclixBrowserActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:name="com.adsdk.sdk.banner.InAppWebView"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name="com.adsdk.sdk.mraid.MraidActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name="com.adsdk.sdk.video.RichMediaActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:hardwareAccelerated="false" />
         <activity
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity android:name="com.chapslife.septatest.maps.support.SupportMapActivity" />
-        <activity
-            android:name="com.flurry.android.FlurryFullscreenTakeoverActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode" >
-        </activity>
 
         <meta-data
             android:name="ADMOB_PUBLISHER_ID"
             android:value="a14c33d9253ff64" />
-        <meta-data
-            android:name="com.flurry.admob.MY_AD_UNIT_ID"
-            android:value="a14c33d9253ff64" />
-        <meta-data
-            android:name="com.flurry.admob.test"
-            android:value="true" />
 
         <provider
             android:name="com.chapslife.septatest.provider.SeptaDataProvider"

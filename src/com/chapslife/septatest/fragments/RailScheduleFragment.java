@@ -67,9 +67,12 @@ public class RailScheduleFragment extends BaseFragment implements
 
 		origStation = getActivity().getIntent().getStringExtra("origStation");
 		destStation = getActivity().getIntent().getStringExtra("destStation");
+		int railCount = preferences.getInt(Constants.RAIL_CHOSEN, 0);
+		
 		SharedPreferences.Editor editor = preferences.edit();
 		editor.putString("origStation", origStation);
 		editor.putString("destStation", destStation);
+		editor.putInt(Constants.RAIL_CHOSEN, railCount + 1);
 		editor.commit();
 
 		mListView = (ListView) root.findViewById(R.id.listview_listview);
@@ -121,7 +124,7 @@ public class RailScheduleFragment extends BaseFragment implements
 
 	@Override
 	public void onLoaderReset(Loader<ArrayList<RailTrip>> loader) {
-		mAdapter.setItems(null);
+		//mAdapter.setItems(null);
 	}
 
 	@Override
@@ -167,6 +170,8 @@ public class RailScheduleFragment extends BaseFragment implements
 			temp = null;
 			mAdapter.setDestStation(destStation);
 			mAdapter.setOrigStation(origStation);
+			mAdapter.setItems(null);
+			mEmptyList.setVisibility(View.INVISIBLE);
 			mProgressBar.setVisibility(View.VISIBLE);
 			getLoaderManager().restartLoader(LOAD_SCHEDULES, null, this);
 			return true;

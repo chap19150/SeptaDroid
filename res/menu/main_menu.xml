@@ -17,8 +17,12 @@
         android:showAsAction="ifRoom"
         android:title="Favorites"/>
     <item
+        android:id="@+id/main_maps"
+        android:showAsAction="never"
+        android:title="Maps"/>
+ <!--    <item
         android:id="@+id/main_settings"
         android:showAsAction="ifRoom"
-        android:title="Notifications"/>
+        android:title="Notifications"/> -->
 
 </menu>

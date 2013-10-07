@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,12 +34,16 @@ public class BusListFragment extends BaseFragment{
 	
 	private LinearLayout layout;
 	private Boolean checked = false;
+
+	protected SharedPreferences preferences;
 	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 
 		expandableView = new ExpandableListView(getActivity());
+		preferences = getActivity().getSharedPreferences(Constants.PREFERENCES_KEY,
+				Context.MODE_PRIVATE);
 	}
 
 	/**
@@ -1887,7 +1893,12 @@ public class BusListFragment extends BaseFragment{
 
 								}
 							}
-							Log.i(TAG, title);
+							int railCount = preferences.getInt(Constants.BUS_CHOSEN, 0);
+							
+							SharedPreferences.Editor editor = preferences.edit();
+							editor.putInt(Constants.BUS_CHOSEN, railCount + 1);
+							editor.commit();
+							
 							Intent intent = new Intent(getActivity(),
 									BusStopsActivity.class);
 							intent.putExtra(Constants.EXTRA_BUS_TITLE, title);
